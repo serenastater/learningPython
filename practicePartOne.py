@@ -14,7 +14,25 @@ rate = float(inp)
 
 if hrs <= 40:
     pay = hrs * rate
-elif hrs > 40:
+else hrs > 40:
     pay = (40 * rate) + ((hrs-40) * 1.5 * rate)
+print(pay)
 
+# Or...
+
+try:
+    inp = raw_input("Enter Hours:")
+    hrs = float(inp)
+
+    inp = raw_input("Enter Rate per Hour:")
+    rate = float(inp)
+except:
+    print("Please give us numbers")
+    quit()
+    
+print rate, hrs
+if hrs <= 40:
+    pay = hrs * rate
+else:
+    pay = (40 * rate) + ((hrs-40) * 1.5 * rate)
 print(pay)
