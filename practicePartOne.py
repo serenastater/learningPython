@@ -29,7 +29,7 @@ try:
 except:
     print("Please give us numbers")
     quit()
-    
+
 print rate, hrs
 if hrs <= 40:
     pay = hrs * rate
