@@ -14,7 +14,7 @@ rate = float(inp)
 
 if hrs <= 40:
     pay = hrs * rate
-else hrs > 40:
+elif hrs > 40:
     pay = (40 * rate) + ((hrs-40) * 1.5 * rate)
 print(pay)
 
