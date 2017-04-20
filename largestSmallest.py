@@ -6,31 +6,29 @@
 # number. Enter the numbers from the book for problem 5.1 and
 # Match the desired output as shown.
 
-# Enter a number: 4
-# Enter a number: 5
-# Enter a number: bad data
-# Invalid input
-# Enter a number: 7
-# Enter a number: done
-# 16 3 5.33333333333
-
 largest = None
 smallest = None
+total = 0
 
-try:
-    while True:
-        inp = raw_input("Enter a number: ")
-        num = float(inp)
-        if num == "done":
-            break
-        elif num < smallest:
-            smallest = num
-        elif num > largest:
-            largest = num
-        print num, smallest, largest
-except:
-    if type(num) != int:
-        print("Invalid input")
+while True:
+    inp = raw_input("Enter a number: ")
+    if inp == "done":
+        break
+    try:
+        num = int(inp)
+    except:
+        print "Invalid input"
+        continue
+    if smallest is None:
+        smallest = num
+        total = smallest + num
+    if num > largest:
+        largest = num
+        total = largest + num
+    elif num < smallest:
+        smallest = num
+        total = smallest + num
 
-
-#print "Maximum", largest
+print "Total is", total
+print "Maximum is", largest
+print "Minimum is", smallest
