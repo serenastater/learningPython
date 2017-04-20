@@ -12,8 +12,8 @@ total = 0
 
 while True:
     inp = raw_input("Enter a number: ")
-    if inp == "done":
-        break
+    if inp == "done" : break
+    if len(inp) < 1 : break
     try:
         num = int(inp)
     except:
