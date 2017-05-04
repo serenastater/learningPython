@@ -9,3 +9,23 @@
 # produced, the program reads through the dictionary
 # using a maximum loop to find the most prolific
 # committer.
+
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+handle = open(name)
+
+count = 0
+counts = dict()
+
+for line in handle:
+    line = line.rstrip()
+    if line.startswith('From '):
+        words = line.split()
+        for word in words:
+            if word not in counts:
+                counts[word] = 1
+            else:
+                counts[word] += 1
+for key in counts:
+    if 
+    print counts
