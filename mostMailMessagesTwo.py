@@ -10,32 +10,29 @@
 # using a maximum loop to find the most prolific
 # committer.
 
-file = raw_input("Enter file:")
-
-if len(file) < 1:
-    name = "mbox-short.txt"
-
+name = raw_input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
 handle = open(name)
 
-from_lines = []
-senders = {}
+count = dict()
 
 for line in handle:
     line = line.rstrip()
-    if line.find('From ') == 0:
-        line = line.split(' ')
-        sender = line[1]
-        if sender not in senders:
-            senders[sender] = 1
-        else:
-            senders[sender] += 1
+    if line.startswith('From '):
+        words = line.split()
+        for word in words:
+            count[word] = count.get(word, 0) + 1
 
-sender = ''
-count = 0
+#Print list of tuples
+#print count.items()
 
-for key in senders:
-    if senders[key] > count:
-        count = senders[key]
-        sender = key
+maxVal = None
+maxKee = None
+for kee,val in count.items():
+    if maxVal == None or maxVal < val:
+        maxVal = val
+        maxKee = kee
 
-print "%s %s" % (sender, str(count))
+print maxKee, maxVal
+
+#This currently prints the word that occurs the most, not the sender who sends the most
