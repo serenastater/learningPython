@@ -10,3 +10,14 @@
 name = raw_input("Enter file:")
 if len(name) < 1 : name = "mbox-short.txt"
 handle = open(name)
+
+count = dict()
+
+for line in handle:
+    line = line.rstrip()
+    if line.startswith('From '):
+        words = line.split()
+        print words
+        for word in words:
+            count[word] = count.get(word, 0) + 1
+            print count
