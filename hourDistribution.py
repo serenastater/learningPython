@@ -16,8 +16,30 @@ count = dict()
 for line in handle:
     line = line.rstrip()
     if line.startswith('From '):
+        # print line
         words = line.split()
-        print words
-        for word in words:
-            count[word] = count.get(word, 0) + 1
-            print count
+        time = words[5]
+        # print time
+        hour = time[0:time.find(":"):1]
+        # print hour
+        # if hour not in count:
+        #     count[hour] = 1
+        # else:
+        #     count[hour] += 1
+        count[hour] = count.get(hour,0) + 1
+        # print count
+list = count.keys()
+# print list
+list.sort()
+for key in list:
+    print key, count[key]
+
+
+
+
+
+
+
+        # for word in words:
+        #     count[word] = count.get(word, 0) + 1
+        #     print count
