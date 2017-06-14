@@ -23,10 +23,29 @@
 # To make the code a little simpler, you can use an XPath selector
 # string to look through the entire tree of XML for any tag named
 # 'count' with the following line of code:
-# 
+#
 # counts = tree.findall('.//count')
 #
 # Take a look at the Python ElementTree documentation and look
 # for the supported XPath syntax for details. You could also work
 # from the top of the XML down to the comments node and then loop
 # through the child nodes of the comments node.
+
+import urllib
+import xml.etree.ElementTree as ET
+
+url = raw_input('Enter URL:')
+# URL is: http://python-data.dr-chuck.net/comments_368404.xml
+
+handle = urllib.urlopen(url)
+data = handle.read()
+
+tree = ET.fromstring(data)
+numbers = tree.findall('.//count')
+
+total = 0
+
+for comment in tree.findall("./comments/comment"):
+ total += int(comment.find('count').text)
+
+print total
